@@ -1,9 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="Exc_3.MainWindow"
-        Title="Kalkulator"
-        Width="500" Height="720"
-        MinWidth="380" MinHeight="550"
+        Title="Kalkulator Saintifik"
+        Width="580" Height="760"
+        MinWidth="460" MinHeight="600"
         CanResize="True"
         WindowStartupLocation="CenterScreen"
         Background="#181818"
@@ -11,7 +11,7 @@
         TextInput="OnWindowTextInput">
 
     <Viewbox Stretch="Uniform">
-        <Grid Width="460" Height="680" RowDefinitions="Auto,*" Margin="20">
+        <Grid Width="540" Height="720" RowDefinitions="Auto,*" Margin="20">
             
             <Border Grid.Row="0" 
                     Background="#252526" 
@@ -29,38 +29,56 @@
                     <TextBlock x:Name="TextLayar" 
                                Text="0" 
                                Foreground="#ffffff" 
-                               FontSize="56" 
+                               FontSize="52" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Right" 
                                Margin="0,8,0,0"/>
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*">
+            <Grid Grid.Row="1" RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
 
-                <Button Grid.Row="0" Grid.Column="0" Content="C" Click="OnClearClick" Background="#d32f2f" Foreground="White"/>
-                <Button Grid.Row="0" Grid.Column="1" Content="⌫" Click="OnBackspaceClick" Background="#3a3a3c" Foreground="White"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="%" Click="OnOperatorClick" Background="#3a3a3c" Foreground="White"/>
-                <Button Grid.Row="0" Grid.Column="3" Content="÷" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="/"/>
+                <!-- Row 0: Mode, sin, cos, tan, Clear -->
+                <Button Grid.Row="0" Grid.Column="0" x:Name="BtnMode" Content="DEG" Click="OnModeToggleClick" Background="#3a3a3c" Foreground="#4fc3f7"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="sin" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="sin"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="cos" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="cos"/>
+                <Button Grid.Row="0" Grid.Column="3" Content="tan" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="tan"/>
+                <Button Grid.Row="0" Grid.Column="4" Content="C" Click="OnClearClick" Background="#d32f2f" Foreground="White"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Content="7" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="7"/>
-                <Button Grid.Row="1" Grid.Column="1" Content="8" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="8"/>
-                <Button Grid.Row="1" Grid.Column="2" Content="9" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="9"/>
-                <Button Grid.Row="1" Grid.Column="3" Content="×" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="*"/>
+                <!-- Row 1: x^2, x^y, sqrt, Backspace, Divide -->
+                <Button Grid.Row="1" Grid.Column="0" Content="x²" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="sqr"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="x^y" Click="OnOperatorClick" Background="#3a3a3c" Foreground="White" Tag="^"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="√" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="sqrt"/>
+                <Button Grid.Row="1" Grid.Column="3" Content="⌫" Click="OnBackspaceClick" Background="#3a3a3c" Foreground="White"/>
+                <Button Grid.Row="1" Grid.Column="4" Content="÷" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="/"/>
 
-                <Button Grid.Row="2" Grid.Column="0" Content="4" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="4"/>
-                <Button Grid.Row="2" Grid.Column="1" Content="5" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="5"/>
-                <Button Grid.Row="2" Grid.Column="2" Content="6" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="6"/>
-                <Button Grid.Row="2" Grid.Column="3" Content="-" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="-"/>
+                <!-- Row 2: ln, 7, 8, 9, Multiply -->
+                <Button Grid.Row="2" Grid.Column="0" Content="ln" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="ln"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="7" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="7"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="8" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="8"/>
+                <Button Grid.Row="2" Grid.Column="3" Content="9" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="9"/>
+                <Button Grid.Row="2" Grid.Column="4" Content="×" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="*"/>
 
-                <Button Grid.Row="3" Grid.Column="0" Content="1" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="1"/>
-                <Button Grid.Row="3" Grid.Column="1" Content="2" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="2"/>
-                <Button Grid.Row="3" Grid.Column="2" Content="3" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="3"/>
-                <Button Grid.Row="3" Grid.Column="3" Content="+" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="+"/>
+                <!-- Row 3: log, 4, 5, 6, Subtract -->
+                <Button Grid.Row="3" Grid.Column="0" Content="log" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="log"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="4" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="4"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="5" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="5"/>
+                <Button Grid.Row="3" Grid.Column="3" Content="6" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="6"/>
+                <Button Grid.Row="3" Grid.Column="4" Content="-" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="-"/>
 
-                <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="0" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="0"/>
-                <Button Grid.Row="4" Grid.Column="2" Content="." Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="."/>
-                <Button Grid.Row="4" Grid.Column="3" Content="=" Click="OnSamaDenganClick" Background="#2e7d32" Foreground="White"/>
+                <!-- Row 4: 1/x, 1, 2, 3, Add -->
+                <Button Grid.Row="4" Grid.Column="0" Content="1/x" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="recip"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="1" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="1"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="2" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="2"/>
+                <Button Grid.Row="4" Grid.Column="3" Content="3" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="3"/>
+                <Button Grid.Row="4" Grid.Column="4" Content="+" Click="OnOperatorClick" Background="#f57c00" Foreground="White" Tag="+"/>
+
+                <!-- Row 5: n!, pi, 0, ., Equals -->
+                <Button Grid.Row="5" Grid.Column="0" Content="n!" Click="OnScientificUnaryClick" Background="#3a3a3c" Foreground="White" Tag="fact"/>
+                <Button Grid.Row="5" Grid.Column="1" Content="π" Click="OnConstantClick" Background="#3a3a3c" Foreground="White" Tag="pi"/>
+                <Button Grid.Row="5" Grid.Column="2" Content="0" Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="0"/>
+                <Button Grid.Row="5" Grid.Column="3" Content="." Click="OnAngkaClick" Background="#2c2c2e" Foreground="White" Tag="."/>
+                <Button Grid.Row="5" Grid.Column="4" Content="=" Click="OnSamaDenganClick" Background="#2e7d32" Foreground="White"/>
             </Grid>
         </Grid>
     </Viewbox>
@@ -71,10 +89,11 @@
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="6"/>
-            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Focusable" Value="False"/>
         </Style>
     </Window.Styles>
 </Window>
