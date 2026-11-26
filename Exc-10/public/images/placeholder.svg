@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#EFF6FF"/>
+  <rect x="145" y="95" width="110" height="90" rx="12" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2"/>
+  <circle cx="176" cy="126" r="10" fill="#60A5FA"/>
+  <path d="M155 170L184 140L205 160L222 146L245 170H155Z" fill="#3B82F6"/>
+  <text x="200" y="216" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1E3A8A">ShopEase Product</text>
+</svg>
